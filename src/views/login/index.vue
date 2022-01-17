@@ -54,7 +54,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-
+import axios from 'axios'
 export default {
   name: 'Login',
   data() {
@@ -93,6 +93,16 @@ export default {
       },
       immediate: true
     }
+  },
+  created() {
+    const url = '/dev-api/getGroupName'
+    axios.get(url, {
+      headers: {
+        'Access-Token': 'd811c84f13b3420e9113a894c6456f7d'
+      }
+    }).then(res => {
+      console.log(res)
+    })
   },
   methods: {
     showPwd() {
